@@ -90,10 +90,10 @@ float GetRandomFloat(float min, float max)
 
 void KinematicObject::Randomise()
 {
-	position.x = GetRandomFloat(-1.0f, 10.0f);
-	position.y = GetRandomFloat(-1.0f, 10.0f);
-	velocity.x = GetRandomFloat(-1.0f, 1.0f);
-	velocity.y = GetRandomFloat(-1.0f, 1.0f);
+	position.x = GetRandomFloat(-10.0f, 10.0f);
+	position.y = GetRandomFloat(-10.0f, 10.0f);
+	velocity.x = GetRandomFloat(-10.0f, 10.0f);
+	velocity.y = GetRandomFloat(-10.0f, 10.0f);
 	radius = GetRandomFloat(0.1f, 0.5f);
 	//randomise mass 
 }

@@ -8,8 +8,8 @@ public:
 	glm::vec2 position{ 0 , 0 };
 	glm::vec2 prePosition{ 0 , 0 };
 	glm::vec2 velocity{ 0,0 };
-	glm::vec2 acceleration{ 0, -10 };
-	glm::vec2 gravity{ 0, -9.81};
+	glm::vec2 acceleration{ 0, 0 };
+	glm::vec2 gravity{ 0, 0};
 
 	// f=m/a
 	//

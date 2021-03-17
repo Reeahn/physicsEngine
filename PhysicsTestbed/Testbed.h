@@ -29,6 +29,7 @@ protected:
 	bool leftButtonDown = false;
 	bool rightButtonDown = false;
 	float time = 0.0f;
+	float storedVelocity = 0;
 	LineRenderer lines;
 	const float deltaTime = 0.0166667f;	//Delta time should be constant for physics simulations.
 	const int gridLimits = 10;

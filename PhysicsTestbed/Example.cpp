@@ -5,7 +5,7 @@
 Example::Example() : Testbed()
 {
 	//Your initialisation code goes here!
-	for (int i = 0; i < 60 ; i++)
+	for (int i = 0; i < 100 ; i++)
 	{
 		stuff.push_back(KinematicObject());
 	}
@@ -47,6 +47,8 @@ void Example::Update()
 				{
 					if (iXInitialVelocity > 0 && jXInitialVelocity < 0)
 					{
+						stuff[i].collisionCheck = true;
+						stuff[j].collisionCheck = true;
 						continue;
 					}
 				}
@@ -54,6 +56,8 @@ void Example::Update()
 				{
 					if (iXInitialVelocity < 0 && jXInitialVelocity > 0)
 					{
+						stuff[i].collisionCheck = true;
+						stuff[j].collisionCheck = true;
 						continue;
 					}
 				}
@@ -61,6 +65,8 @@ void Example::Update()
 				{
 					if (iYInitialVelocity > 0 && jXInitialVelocity < 0)
 					{
+						stuff[i].collisionCheck = true;
+						stuff[j].collisionCheck = true;
 						continue;
 					}
 				}
@@ -68,6 +74,8 @@ void Example::Update()
 				{
 					if (iYInitialVelocity < 0 && jXInitialVelocity > 0)
 					{
+						stuff[i].collisionCheck = true;
+						stuff[j].collisionCheck = true;
 						continue;
 					}
 				}
@@ -128,6 +136,16 @@ void Example::Render()
 	//Example code that draws a coloured circle at the mouse position, whose colour depends on which buttons are down.
 	if (leftButtonDown)
 	{
+		for (int i = 0; i < stuff.size(); i++) {
+			
+			float distanceBetween = sqrt((stuff[i].position.x - cursorPos.x) * (stuff[i].position.x - cursorPos.x) +
+				(stuff[i].position.y - cursorPos.y) * (stuff[i].position.y - cursorPos.y));
+			float totalRadius = stuff[i].radius + 0.2;
+			if (distanceBetween <= totalRadius) {
+				stuff[i].velocity -= 1;
+				storedVelocity += 1;				
+			}
+		}
 		
 		lines.DrawCircle(cursorPos, 0.2f, { 1, 0, 0 });
 	}
