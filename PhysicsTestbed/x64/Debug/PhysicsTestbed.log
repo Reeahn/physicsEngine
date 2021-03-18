@@ -1,3 +1,12 @@
-﻿  Example.cpp
-D:\Visual studio repos\Phys\PhysicsTestbed\Example.cpp(114,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  PhysicsTestbed.vcxproj -> D:\Visual studio repos\Phys\x64\Debug\PhysicsTestbed.exe
+﻿  EntryPoint.cpp
+D:\Visual studio repos\Phys\PhysicsTestbed\KinematicObject.h(16,15): error C2065: 'stuff': undeclared identifier
+  Example.cpp
+D:\Visual studio repos\Phys\PhysicsTestbed\KinematicObject.h(16,15): error C2065: 'stuff': undeclared identifier
+D:\Visual studio repos\Phys\PhysicsTestbed\Example.cpp(48,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  KinematicObject.cpp
+D:\Visual studio repos\Phys\PhysicsTestbed\Example.h(13,14): error C2065: 'KinematicObject': undeclared identifier
+D:\Visual studio repos\Phys\PhysicsTestbed\Example.h(13,7): error C2923: 'std::vector': 'KinematicObject' is not a valid template type argument for parameter '_Ty'
+D:\Visual studio repos\Phys\PhysicsTestbed\Example.h(13,7): error C2976: 'std::vector': too few template arguments
+D:\Microsoft Visual Studio\VC\Tools\MSVC\14.28.29910\include\vector(416): message : see declaration of 'std::vector'
+D:\Visual studio repos\Phys\PhysicsTestbed\KinematicObject.h(16,15): error C2065: 'stuff': undeclared identifier
+  Generating Code...
