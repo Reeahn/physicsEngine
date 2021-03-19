@@ -1,6 +1,4 @@
 #include "KinematicObject.h"
-#include "Example.h"
-
 
 
 
@@ -20,11 +18,11 @@ KinematicObject::KinematicObject(float xPos, float yPos)
 
 void KinematicObject::Update(float deltaTime)
 {
+	colour = { 1,1,1 };
 	//glm::vec2 gravityForce = glm::vec2(0.0f, -9.81f) * mass;
 	
-	colour = { 1, 1, 1 };
-
 	CollisionCheck(position, radius);
+	
 
 	/*std::cout << " " << position.x << ", " <<position.y << std::endl;*/
 	velocity += acceleration * deltaTime;
@@ -38,33 +36,49 @@ void KinematicObject::Update(float deltaTime)
 			collisionEnabled = true;
 		}
 	}
-	float posX = Example::stuff[0];
+	
+
+	if (position.y - radius <= -width)
+	{
+		position.y = radius - width;
+	}
+	if (position.y + radius >= width)
+	{
+		position.y = width -radius;
+	}
+	if (position.x - radius <= -width)
+	{
+		position.x = radius - width;
+	}
+	if (position.x + radius >= width)
+	{
+		position.x = width - radius;
+	}
+
+
 }
 
 
 void KinematicObject::CollisionCheck(glm::vec2 unitPos, float radius)
 {
-	if (unitPos.y - radius <= -10)
+	if (unitPos.y - radius <= -width)
 	{
 		velocity.y *= -1;
-		position.y = radius - 10;
 	}
-	if (unitPos.y + radius >= 10)
+	if (unitPos.y + radius >= width)
 	{
 		velocity.y *= -1;
-		position.y = 10 - radius;
 	}
 
-	if (unitPos.x - radius <= -10)
+	if (unitPos.x - radius <= -width)
 	{
 		velocity.x *= -1;
-		position.x = radius - 10;
 	}
-	if (unitPos.x + radius >= 10)
+	if (unitPos.x + radius >= width)
 	{
 		velocity.x *= -1;
-		position.x = 10 - radius;
 	}
+
 }
 
 
@@ -75,10 +89,10 @@ float GetRandomFloat(float min, float max)
 
 void KinematicObject::Randomise()
 {
-	position.x = GetRandomFloat(-10.0f, 10.0f);
-	position.y = GetRandomFloat(-10.0f, 10.0f);
+	position.x = GetRandomFloat(-5.0f, 5.0f);
+	position.y = GetRandomFloat(-5.0f, 5.0f);
 	velocity.x = GetRandomFloat(-1.0f, 1.0f);
 	velocity.y = GetRandomFloat(-1.0f, 1.0f);
-	radius = GetRandomFloat(0.5f, 0.5f);
+	radius = GetRandomFloat(0.1f, 0.5f);
 	//randomise mass 
 }

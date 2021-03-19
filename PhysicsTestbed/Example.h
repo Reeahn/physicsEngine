@@ -9,7 +9,7 @@
 
 class Example : public Testbed
 {
-protected:
+
 	std::vector<KinematicObject> stuff;
 public:
 

@@ -8,17 +8,18 @@ public:
 	glm::vec2 position{ 0 , 0 };
 	glm::vec2 velocity{ 0,0 };
 	glm::vec2 acceleration{ 0, 0 };
-	glm::vec3 colour{ 1, 1, 1 };
-
+	glm::vec3 colour{ 1,1,1 };
 	// f=m/a
+	//
 
 	float radius;
-	float mass = 1.0f;
+
+	int width = 5;
 
 	bool collisionCheck = false;
 	bool collisionEnabled = false;
 
-	int collisonSpawnTimer = 120;
+	int collisonSpawnTimer = 0;
 
 	KinematicObject();
 	KinematicObject(float xPos, float yPos);
