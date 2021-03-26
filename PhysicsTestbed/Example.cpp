@@ -17,6 +17,15 @@ void Example::Update()
 	//This call ensures that your mouse position and aspect ratio are maintained as correct.
 	Testbed::Update();
 	
+	//Create a list of delta time incrementing by 2 to 20
+	//For each time in the list of delta times calculate a set of x and y coordinates for lines to be drawn to show the trajectory of the circles
+	//can draw circles at these coordinates instead
+	double timeArray [20] = {};
+	double multiplyBy = 2;
+	for (int i = 0; i < timeArray.size(); i++) {
+		timeArray[i] = deltaTime * multiplyBy;
+		multiplyBy += 1;
+	}
 
 	//Your physics (or whatever) code goes here!
 	for (int i = 0; i < stuff.size(); i++)
