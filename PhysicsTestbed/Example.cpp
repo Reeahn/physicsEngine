@@ -1,5 +1,6 @@
 #include "Example.h"
-#include"KinematicObject.h"
+#include "KinematicObject.h"
+#incldue "RectangleObject.h"
 #include <vector>
 
 Example::Example() : Testbed()
@@ -10,19 +11,63 @@ Example::Example() : Testbed()
 		stuff.push_back(KinematicObject());
 	}
 	
+	float totalWidth 10;
+	float totalHeight 10;
+	int rectangleAmount = 20;
+	
+	float rectangleWidth = totalWidth / rectangleAmount;
+	float heightIncrement = totalHeight / rectangleAmount;
+
+	for (int i = 0; i <= rectangleAmount; i++)
+	{
+		rectangles.push_back(RectangleObject(i, rectangleHeight, heightIncrement);
+	}
+	// Shuffle the rectangles up until they are in a unsorted order
+	while (sorted)
+	{
+		for (int i = 0; i <= rectangleAmount - 1; i++)
+		{
+			int positionSwap = GetRandomInt(i,rectangleAmount);
+			if (positionSwap == i)
+				continue;
+			float tempX = rectangles[i].centre.x;
+			rectangles[i].centre.x = rectangles[positionSwap].centre.x;
+			rectangles[positionSwap].centre.x = tempX;
+		}
+		for (int i = 0; i <= rectangleAmount - 1; i++) 
+		{
+			if (rectangles[index].centre.x > rectangles[index + 1].centre.x)
+				sorted = false;
+		}
+	}
 }
 
 void Example::Update()
 {
 	//This call ensures that your mouse position and aspect ratio are maintained as correct.
 	Testbed::Update();
-	
-
-	//Your physics (or whatever) code goes here!
-	for (int i = 0; i < stuff.size(); i++)
+	// if rectangles are sorted then dont sort them again
+	if (!sorted)
 	{
-		stuff[i].Update(deltaTime);
+		//reset swaps and index so that we can loop through the rectangles again after hitting the last rectangle
+		if (index == rectangles.size())
+		{
+			swaps = 0
+			index = 0;
+		}
+		// main bubble sort algo checks if the next rectangle is smaller than the current and swaps them if so otherwise index 
+		// is incremented and this check is performed again
+		float tempX = rectangles[index].centre.x;
+		if (rectangles[index].centre.x > rectangles[index + 1].centre.x)
+		{
+			rectangles[index].centre.x = rectangles[index + 1].centre.x;
+			rectangles[index + 1].centre.x = tempX;
+			swaps += 1;
+		}
 	}
+	index += 1
+	if (index == reectangles.size() && swaps == 0)
+		sorted = true;
 }
 
 void Example::Render()
@@ -63,15 +108,11 @@ void Example::Render()
 		lines.DrawCircle(cursorPos, 0.2f, { 0, 0, 1 });
 	}
 
-	for (int i = 0; i < stuff.size(); i++)
-	{
-		lines.DrawCircle(stuff[i].position, stuff[i].radius, stuff[i].colour, 8);	
-	}
-
-
 	//Your drawing code goes here!
-	
-
+	for (int i = 0; i < rectangles.size(); i++) 
+	{
+		lines.DrawRectangle(rectangles[i].centre, rectangles[i].height, rectangles[i].width);
+	}
 
 	//This call puts all the lines you've set up on screen - don't delete it or things won't work.
 	Testbed::Render();
